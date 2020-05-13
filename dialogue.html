@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Permanent+Marker&family=Press+Start+2P&display=swap');
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: black;
+        }
+        .myBox {
+            position: absolute;
+            height: 100px;
+            width: 100%;
+            text-align: center;
+            line-height: 100px;
+            top: 50%;
+            margin-top: -50px;
+        }
+
+        .part1 {
+            color: white;
+            /*字体样式*/
+            font-family: 'Homemade Apple', cursive;
+            font-family: 'Permanent Marker', cursive;
+            font-family: 'Press Start 2P', cursive;
+            /*字体大小*/
+            font-size: 15px;
+            margin: 10px 0 0 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+            animation: type 4s steps(50, end);
+            margin:auto
+        }
+
+
+        @keyframes type {
+            from {
+                width: 0;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div id="box" class="myBox">
+        <div class="part1">Have you ever dreamed of any special scenes?</div>
+    </div>
+    <!--<div class="part1">
+        Have you ever dreamed of any special scenes?
+    </div>
+    <div >
+        Have you met someone who you never saw in your dream?
+    </div>
+    <div>
+        <p> A car accident?</p>
+        <p> A rainy day?</p>
+        <p> A room?</p>
+    </div>
+    <div>
+        Now, take my hand.
+    </div>
+    <div>
+        let’s jump from one dream to another.
+    </div>-->
+
+</body>
+</html>
+<script src="js/jquery-3.2.1.js"></script>
+<script>
+    var wordList = [
+        "Have you met someone who you never saw in your dream?",
+        "A car accident?",
+        "A rainy day?",
+        "A room?",
+        "Now, take my hand.",
+        " let’s jump from one dream to another together."]
+    var timeList = [5000, 5000, 3000, 3000, 3000, 5000]
+    var classList = ['part1', 'part1', 'part2', 'part', 'part1', 'part1']
+    for (var i = 0; i < wordList.length; i++) {
+        //alert(wordList[i])
+       // alert(i);
+        (function (i) {
+            setTimeout(function () {
+                $('#box').empty();
+                var el = "<div class='part1'>" + wordList[i] + "<div>"
+                $('#box').append(el);
+            }, (i + 1) * 4000);
+        })(i)
+    }
+
+    setTimeout("javascript:location.href='dream.html'", 28000);
+
+</script>

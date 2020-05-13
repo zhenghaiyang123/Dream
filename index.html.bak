@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dream</title>
+  </head>
+<style media="screen">
+  body {background-image:url('eyes.png');background-size:100%,100%;}
+</style>
+  <body>
+    <div style='opacity:0;'><H1 align=center><FONT SIZE="20" COLOR="">Dream</FONT></H1>
+    <P><center>
+      Produced by Chenle</center>
+    <P>
+   <P align=center><A HREF="dream.html">Click to Enter Your Dream</A>
+   </div>
+  </body>
+</html>

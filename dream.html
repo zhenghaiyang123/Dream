@@ -1,0 +1,303 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <TITLE> New Document </TITLE>
+    <META NAME="Generator" CONTENT="EditPlus">
+    <META NAME="Author" CONTENT="">
+    <META NAME="Keywords" CONTENT="">
+    <META NAME="Description" CONTENT="">
+    <!--<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">-->
+    <style>
+/*@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');*/
+  @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Permanent+Marker&family=Press+Start+2P&display=swap');
+</style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+        body, html {
+          font-family: 'Homemade Apple', cursive;
+          font-family: 'Permanent Marker', cursive;
+          font-family: 'Press Start 2P', cursive;
+            margin:0;
+            padding:0;
+        }
+
+        div.divB {
+            width: 150px;
+            height: 100px;
+            background-color: black;
+            border: 1px solid black;
+            color: white;
+
+            margin: 5px;
+            background-color: rgba(0,0,0,0.1);
+            position: absolute;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .clearline {
+            color: #FFFFFF;
+            text-decoration: none;
+            /*修改Start Dreaming字体大小*/
+            font-size: 24px;
+        }
+        video {
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+        .tips {
+            /*调整提示信息字体样式*/
+            font-family: 'Homemade Apple', cursive;
+            font-family: 'Permanent Marker', cursive;
+            font-family: 'Press Start 2P', cursive;
+            /*调整提示信息字体大小*/
+            font-size: 16px;
+            margin-top: 10px;
+            color: white;
+            text-align: center;
+            animation: blink 1s linear infinite;
+            /* 其它浏览器兼容性前缀 */
+            -webkit-animation: blink 1s linear infinite;
+            -moz-animation: blink 1s linear infinite;
+            -ms-animation: blink 1s linear infinite;
+            -o-animation: blink 1s linear infinite;
+        }
+        /* 定义keyframe动画，命名为blink */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+        /* 添加兼容性前缀 */
+        @-webkit-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-moz-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-ms-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @-o-keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</HEAD>
+<BODY bgcolor="black">
+    <div id="wordWall" style="display:block;width:100%;height:500px"></div>
+    <SCRIPT LANGUAGE="JavaScript">
+
+        var wordList = ["blood", "fantasy", "well", "smooth", "rain", "black", "car", "gradual", "climb", "higher", "room", "eat", "dance"];
+        var mediaList = ["blood.mp4", "fantasy.mp3", "well.mp4", "smooth.mp3", "rain.mp4", "black.mp3", "car.mp4", "gradual.mp3", "climb.mp4", "higher.mp3", "room.mp4", "eat.mp3", "dance.mp4"];
+        var topV = 0;
+        var topMax = 0;
+        var topMin = 0;
+        var leftV = 0;
+        var leftMax = 0;
+        var leftMin = 0;
+        var rowNm = 4;
+        var fontsize = 4;
+        var space = document.body.clientWidth / (rowNm + 1);
+        var htmlStr = "";
+        for (var i = 0; i < 13; i++) {
+            topMin = Math.floor(i / rowNm) * 100 + 100;
+            topMax = Math.floor(i / rowNm) * 100 + 150;
+            topV = Math.floor(Math.random() * (topMax - topMin + 1)) + topMin;
+            //alert(topV);float: left;
+            leftMin = space * (i % rowNm) + 100;
+            leftMax = space * (i % rowNm) + 200;
+            //修改字体大小
+            fontsize = Math.random() * 2 + 4;
+            leftV = Math.floor(Math.random() * (leftMax - leftMin + 1)) + leftMin;
+            //leftV=space*(i%rowNm)+100;
+            htmlStr += "<div class='divB' id='div" + i + "' style='opacity:0;left:" + leftV + "px;top:" + topV + "px;' onclick=\"clicks(" + i + ")\"><font size=\"" + fontsize + "\" color=\"" + rgb() + "\">" + wordList[i] + "</font></div>";
+        }
+        document.getElementById("wordWall").innerHTML = htmlStr;
+
+
+        function clicks(divid) {
+
+            var dvObj = document.getElementById("div" + divid);
+
+            if (dvObj.style.display == 'none') {
+                dvObj.style.display = 'block';
+            } else {
+                dvObj.style.display = 'none';
+            }
+            document.getElementById("playList").value = document.getElementById("playList").value + divid + ",";
+
+        }
+
+        function hideAll() {
+
+            var sbtitle = document.getElementById("link");
+            if (sbtitle) {
+                if (sbtitle.style.display == 'block' || sbtitle.style.display == '') {
+                    sbtitle.style.display = 'none';
+                } else {
+                    sbtitle.style.display = 'block';
+                }
+            }
+            //影藏提示消息 myTips
+            var myTips = document.getElementById("myTips");
+            if (myTips) {
+                if (myTips.style.display == 'block' || myTips.style.display == '') {
+                    myTips.style.display = 'none';
+                } else {
+                    myTips.style.display = 'block';
+                }
+            }
+            document.getElementById("divMV").style.display = 'block';
+            document.getElementById("wordWall").style.display = 'none';
+            var playlistID = document.getElementById("playList").value;
+            playlistID = playlistID.substring(0, playlistID.length - 1);
+            var playSt = playlistID.split(',');
+            var arrayMV = new Array();
+            var arrayAD = new Array();
+
+            for (var i = 0; i < playSt.length; i++) {
+                console.info(mediaList[playSt[i]])
+                if (mediaList[playSt[i]].substring(mediaList[playSt[i]].length - 3, mediaList[playSt[i]].length) == "mp3")//获得音乐播放列表
+                    arrayAD.push(mediaList[playSt[i]]);
+                else
+                    arrayMV.push(mediaList[playSt[i]]);//获得视频播放列表
+            }
+
+            //放入视频播放列表
+            var vLen = arrayMV.length; // 播放列表的长度
+            var curr = 0;
+            var video = document.getElementById("videoply");
+
+            var aLen = arrayAD.length; // 播放列表的长度
+            var acurr = 0;
+            var audio = document.getElementById("audioply");
+
+            video.addEventListener('ended', play);
+            play();
+            function play(e) {
+                video.src = arrayMV[curr];
+                video.load();
+                video.play();
+                curr++;
+                if (curr > vLen) {
+                    curr = 0; // 播放完了，重新播放
+                    video.pause();
+                    audio.pause();
+                    window.location.href = "References.html";
+                }
+            }
+            //放入音频播放列表
+            audio.addEventListener('ended', play1);
+            play1();
+            function play1(e) {
+                audio.src = arrayAD[acurr];
+                audio.load();
+                audio.play();
+                acurr++;
+                if (acurr > aLen) {
+                    acurr = 0; // 播放完了，重新播放
+                }
+            }
+        }
+
+        function fadeIn1(element, speed) {
+            if (element.style.opacity != 1) {
+                var speed = speed || 30;
+                var num = 0;
+                var st = setInterval(function () {
+                    num++;
+                    element.style.opacity = num / 20;
+                    if (num >= 20) { clearInterval(st); }
+                }, speed);
+            }
+        }
+
+        function fadeOut1(element) {
+            if (element.style.opacity != 0) {
+                var speed = speed || 30;
+                var num = 20;
+                var st = setInterval(function () {
+                    num--;
+                    element.style.opacity = num / 20;
+                    if (num <= 0) { clearInterval(st); }
+                }, speed);
+            }
+
+        }
+
+        function showSlowly() {
+            for (var i = 0; i < 13; i++) {
+                fadeIn1(document.getElementById("div" + i), 100);
+
+            }
+        }
+        function hideSlowly() {
+            for (var i = 0; i < 13; i++) {
+                fadeOut1(document.getElementById("div" + i), 100);
+
+            }
+        }
+
+        function rgb() {//rgb颜色随机
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            var color = '#' + r.toString(16) + g.toString(16) + b.toString(16);
+            return color;
+        }
+
+    </SCRIPT>
+    <!--<P><BR>-->
+    <center>
+        <INPUT TYPE="hidden" id="playList">
+        <div id='divMV' style="display:none;align:center">
+            <video id="videoply" preload="none" autoplay="autoplay"> </video><BR>
+            <audio id="audioply" preload="none" autoplay="autoplay" hidden></audio>
+        </div>
+        <a id="link" class="clearline" href="javascript:hideAll()">Start Dreaming</a>
+
+    </center>
+    <div class="tips" id="myTips">#Make sure you clicked all the words before entering your special dream#</div>
+</BODY>
+</HTML>
+
+<SCRIPT LANGUAGE="JavaScript">
+showSlowly();
+ setInterval(hideSlowly, 20000);
+
+
+</SCRIPT>

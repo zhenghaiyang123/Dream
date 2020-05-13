@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Permanent+Marker&family=Press+Start+2P&display=swap');
+        body, html {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .lineone {
+            height: 33%;
+            width: 100%;
+            /*background-color:skyblue;*/
+            margin: 0 auto;
+        }
+
+        .linetwo {
+            float: left;
+            height: 66%;
+            width: 33%;
+            /*background-color: blue;*/
+        }
+
+        .linethree {
+            float: right;
+            height: 66%;
+            width: 67%;
+            text-align: center;
+            line-height: 66%;
+            margin: 0 auto;
+         
+            display: flex;
+        }
+
+        .cast {
+            /*margin: 0 auto;
+            position: absolute;
+            margin-top: 150px;*/
+            margin: 0 auto;
+            align-self: center;
+            /*References字体样式*/
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        video {
+            object-fit: fill;
+        }
+
+        .part1 {
+            color: white;
+            /*提示消息字体样式*/
+            font-family: 'Homemade Apple', cursive;
+            font-family: 'Permanent Marker', cursive;
+            font-family: 'Press Start 2P', cursive;
+            /*字体大小*/
+            font-size: 15px;
+            height:100px;
+            line-height:100px;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+            animation: type 4s steps(40, end);
+            margin: 0 auto;
+            align-self: center
+        }
+        @keyframes type {
+            from {
+                width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgm" src="0.mp3" autoplay></audio>
+    <div class="lineone" id="line1">
+        <video id="shot6" autoplay muted loop style="height:100%;width: 33%;top:0px">
+            <source src="rain.mp4">
+        </video>
+        <!-- </div> -->
+        <!-- <div id="shot7"> -->
+        <video id="shot7" autoplay muted loop style="height:100%;width: 33%;top:0px">
+            <source src="room.mp4">
+        </video>
+        <!-- </div> -->
+        <!-- <div id="shot8"> -->
+        <video id="shot8" autoplay muted loop style="height:100%;width: 33%;top:0px">
+            <source src="well.mp4">
+        </video>
+    </div>
+    <div class="linetwo" id="line2">
+        <video id="shot3" autoplay muted loop style="height:50%;width: 100%">
+            <source src="car.mp4">
+        </video>
+
+        <video id="shot5" autoplay muted loop style="height:50%;width: 100%">
+            <source src="climb.mp4">
+        </video>
+
+
+    </div>
+
+    <div class="linethree" id="line3">
+        <div class="part1">Well...did you enjoy the dream?</div>
+
+        <!--<div id="cast" class="cast" >
+            <h1 style="color: white; font-size: 20px;">References</h1>
+            <h3 style="color: white; font-weight: 3; font-size: 10px;"> kill the fish<br>call me by your name<br>love me if you dare<br>parasite<br>memoirs of a geisha<br>Jojo rabbit<br>eat<br>black noise<br>my brilliant friend<br>paprika<br>in the mood for love</h3>
+        </div>-->
+    </div>
+
+</body>
+</html>
+<script src="js/jquery-3.2.1.js"></script>
+<script>
+    var wordList = [
+        "I did.",
+        "AND I LIVE INSIDE IT."]
+    for (var i = 0; i < wordList.length; i++) {
+      
+        (function (i) {
+            setTimeout(function () {
+                $('#line3').empty();
+                var el = "<div class='part1'>" + wordList[i] + "<div>"
+                $('#line3').append(el);
+            }, (i + 1) * 4000);
+        })(i)
+    }
+    setTimeout(function () {
+        $('#line3').empty();
+        var el = " <div id='cast' class='cast' >"+
+           "<h1 style = 'color: white; font-size: 20px;'> References</h1 >"+
+                "<h3 style='color: white; font-weight: 3; font-size: 10px;'> kill the fish<br>call me by your name<br>love me if you dare<br>parasite<br>memoirs of a geisha<br>Jojo rabbit<br>eat<br>black noise<br>my brilliant friend<br>paprika<br>in the mood for love</h3>"+
+        "</div>"
+        $('#line3').append(el);
+
+    },12000)
+
+   
+
+</script>
